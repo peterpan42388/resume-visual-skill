@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Adam Chen — Sales Manager Resume</title>
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 170mm;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.45;
+  color: #2a1c0e;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── JAPANESE HOME PALETTE ── */
+:root {
+  --p1-bg-start:   #1a1108;
+  --p1-bg-mid:     #2a1c0e;
+  --p1-bg-end:     #352512;
+  --accent-bar:    linear-gradient(90deg, #c8956c, #e8c99d, #f5e6d0, #c8956c);
+  --primary:       #c8956c;
+  --primary-light: #e8c99d;
+  --primary-glow:  rgba(200,149,108,0.20);
+  --text-hero:     #fef9f4;
+  --text-main:     #f0e4d0;
+  --text-muted:    #d4b896;
+  --text-dim:      #a8855a;
+  --tag-bg:        rgba(255,255,255,0.06);
+  --tag-border:    rgba(200,149,108,0.30);
+  --tag-hot-bg:    rgba(200,149,108,0.28);
+  --tag-hot-color: #fef0e0;
+  --sidebar-bg:    rgba(255,255,255,0.03);
+  --divider:       rgba(200,149,108,0.14);
+  --stat-num:      #e8c99d;
+  --p2-bg:         #fdf6ed;
+  --p2-topbar-s:   #2a1c0e;
+  --p2-topbar-e:   #8b6340;
+  --card-shadow:   rgba(60,30,0,0.07);
+  --edu-bg-s:      #fdf0e0;
+  --edu-bg-e:      #fff8f0;
+  --links-bg-s:    #2a1c0e;
+  --links-bg-e:    #8b6340;
+}
+
+/* ── PAGE ── */
+.page {
+  width: 170mm;
+  min-height: 234mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+/* ════════ PAGE 1 ════════ */
+.page1 {
+  background: linear-gradient(160deg, var(--p1-bg-start) 0%, var(--p1-bg-mid) 50%, var(--p1-bg-end) 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.accent-bar {
+  height: 4px;
+  background: var(--accent-bar);
+  flex-shrink: 0;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.avatar-initials {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary-light);
+  box-shadow: 0 0 0 5px var(--primary-glow), 0 8px 24px rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30pt;
+  font-weight: 900;
+  color: var(--primary-light);
+  background: rgba(200,149,108,0.10);
+  flex-shrink: 0;
+  font-family: 'Georgia', serif;
+}
+
+.hero-text { flex: 1; }
+.hero-name {
+  font-size: 28pt;
+  font-weight: 900;
+  color: var(--text-hero);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 3px;
+  font-family: 'Georgia', serif;
+}
+.hero-name-sub {
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 1.2px;
+  margin-bottom: 4px;
+}
+.hero-title {
+  font-size: 8.5pt;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+  font-size: 7.5pt;
+  color: var(--text-muted);
+}
+.dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* Badges */
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.badge-item {
+  background: rgba(200,149,108,0.14);
+  border: 1px solid rgba(200,149,108,0.35);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 0.3px;
+}
+
+/* Body layout */
+.p1-body {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  padding: 14px 0 0;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 72mm;
+  flex-shrink: 0;
+  padding: 0 16px 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--divider);
+}
+
+.sec-title {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  border-bottom: 1px solid rgba(200,149,108,0.22);
+  padding-bottom: 4px;
+  margin-bottom: 7px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+  font-size: 7.8pt;
+}
+.contact-icon {
+  width: 18px; height: 18px;
+  background: rgba(200,149,108,0.18);
+  border: 1px solid rgba(200,149,108,0.30);
+  border-radius: 4px;
+  font-size: 6pt;
+  font-weight: 700;
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 7.8pt;
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  background: rgba(200,149,108,0.08);
+  border: 1px solid rgba(200,149,108,0.18);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  border-right: 1px solid rgba(200,149,108,0.14);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 15pt;
+  font-weight: 900;
+  color: var(--stat-num);
+  line-height: 1;
+  font-family: 'Georgia', serif;
+}
+.stat-label {
+  font-size: 6pt;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+
+/* Skills */
+.skill-block { margin-bottom: 6px; }
+.skill-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.tag {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 12px;
+  padding: 1px 7px;
+  font-size: 6.8pt;
+  color: var(--text-muted);
+}
+.tag.hot {
+  background: var(--tag-hot-bg);
+  border-color: rgba(200,149,108,0.45);
+  color: var(--tag-hot-color);
+  font-weight: 700;
+}
+
+/* Main col */
+.main-col {
+  flex: 1;
+  padding: 0 24px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summary-text {
+  font-size: 8.5pt;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+.summary-text strong { color: var(--primary-light); }
+
+.job-entry { margin-bottom: 10px; }
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1px;
+}
+.job-company {
+  font-size: 9pt;
+  font-weight: 800;
+  color: var(--text-hero);
+}
+.job-date {
+  font-size: 7pt;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.job-role {
+  font-size: 8pt;
+  color: var(--primary-light);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.job-bullets {
+  padding-left: 14px;
+  color: var(--text-main);
+  font-size: 8pt;
+}
+.job-bullets li { margin-bottom: 2px; }
+.job-bullets strong { color: var(--text-hero); }
+
+/* Footer */
+.p1-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  border-top: 1px solid var(--divider);
+  margin-top: auto;
+}
+.p1-footer-left { font-size: 7pt; color: var(--text-dim); font-style: italic; }
+.p1-footer-right { font-size: 7pt; color: var(--primary-light); font-weight: 600; }
+
+/* ════════ PAGE 2 ════════ */
+.page2 {
+  background: var(--p2-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.p2-topbar {
+  background: linear-gradient(90deg, var(--p2-topbar-s), var(--p2-topbar-e));
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.p2-topbar-name {
+  font-size: 10pt;
+  font-weight: 800;
+  color: #fef9f4;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
+}
+.p2-topbar-links {
+  font-size: 7.5pt;
+  color: rgba(254,249,244,0.7);
+}
+
+.p2-body {
+  display: flex;
+  flex: 1;
+  padding: 14px;
+  gap: 12px;
+}
+
+.p2-main { flex: 1; }
+.p2-sidebar {
+  width: 58mm;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sec2-title {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #8b6340;
+  border-bottom: 2px solid #c8956c;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+.proj-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-left: 3px solid #c8956c;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.proj-name {
+  font-size: 8.5pt;
+  font-weight: 800;
+  color: #2a1c0e;
+}
+.proj-tag {
+  font-size: 6.5pt;
+  color: #888;
+  background: #fdf0e0;
+  border-radius: 10px;
+  padding: 1px 7px;
+}
+.proj-sub {
+  font-size: 7.5pt;
+  color: #8b6340;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.proj-bullets {
+  padding-left: 13px;
+  font-size: 7.8pt;
+  color: #334155;
+}
+.proj-bullets li { margin-bottom: 2px; }
+.proj-bullets strong { color: #2a1c0e; }
+
+.prev-job { margin-bottom: 8px; }
+.prev-job-name { font-size: 8pt; font-weight: 700; color: #2a1c0e; }
+.prev-job-role { font-size: 7.5pt; color: #8b6340; font-weight: 600; }
+.prev-job-date { font-size: 7pt; color: #888; }
+.prev-job-note { font-size: 7.5pt; color: #555; margin-top: 2px; }
+
+.edu-block {
+  background: linear-gradient(135deg, #fdf0e0, #fff8f0);
+  border-radius: 8px;
+  padding: 9px 11px;
+}
+.edu-school { font-size: 8.5pt; font-weight: 800; color: #2a1c0e; }
+.edu-degree { font-size: 7.5pt; color: #8b6340; font-weight: 600; margin-top: 2px; }
+.edu-year { font-size: 7pt; color: #888; margin-top: 2px; }
+
+.links-box {
+  background: linear-gradient(135deg, var(--links-bg-s), var(--links-bg-e));
+  border-radius: 10px;
+  padding: 11px 13px;
+}
+.links-box-title {
+  font-size: 7pt;
+  font-weight: 700;
+  color: rgba(254,249,244,0.7);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.link-icon {
+  width: 18px; height: 18px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: #fef9f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.link-text { font-size: 7.5pt; color: rgba(254,249,244,0.85); }
+.kw-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.kw-chip {
+  background: rgba(200,149,108,0.28);
+  border: 1px solid rgba(232,201,157,0.40);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 6.5pt;
+  color: #fef0e0;
+}
+
+.page-num {
+  text-align: right;
+  padding: 6px 14px;
+  font-size: 7pt;
+  color: #aaa;
+}
+
+/* certification strip */
+.cert-strip {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+.cert-badge {
+  background: linear-gradient(135deg, #fdf0e0, #fff0d8);
+  border: 1px solid #e8c99d;
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-size: 7pt;
+  font-weight: 700;
+  color: #8b6340;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE 1 ══════════════ -->
+<div class="page page1">
+
+  <div class="accent-bar"></div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="avatar-initials">A</div>
+    <div class="hero-text">
+      <div class="hero-name">Adam Chen</div>
+      <div class="hero-name-sub">陈建辉 &nbsp;·&nbsp; Senior Sales Manager</div>
+      <div class="hero-title">Enterprise Sales Director &nbsp;|&nbsp; Business Development &nbsp;|&nbsp; Revenue Growth</div>
+      <div class="hero-meta">
+        <span><span class="dot"></span>Shanghai / Remote</span>
+        <span><span class="dot"></span>+86 138-xxxx-6630</span>
+        <span><span class="dot"></span>adam.chen@example.com</span>
+        <span><span class="dot"></span>Target: <strong style="color:#e8c99d">$100K–140K / yr</strong></span>
+        <span><span class="dot"></span>Open to relocation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges -->
+  <div class="badges-row">
+    <span class="badge-item">Enterprise Sales</span>
+    <span class="badge-item">Salesforce CRM</span>
+    <span class="badge-item">Pipeline Management</span>
+    <span class="badge-item">Team Leadership</span>
+    <span class="badge-item">SaaS Sales</span>
+    <span class="badge-item">Channel Partners</span>
+    <span class="badge-item">Contract Negotiation</span>
+    <span class="badge-item">Revenue Growth</span>
+    <span class="badge-item">Market Expansion</span>
+    <span class="badge-item">Sales Coaching</span>
+  </div>
+
+  <!-- Body -->
+  <div class="p1-body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div>
+        <div class="sec-title">Contact</div>
+        <div class="contact-item">
+          <div class="contact-icon">LN</div>
+          <a class="contact-link">linkedin.com/in/adam-chen-sh</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">GH</div>
+          <a class="contact-link">github.com/adamchen-biz</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">WB</div>
+          <a class="contact-link">adamchen.me</a>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">10</span>
+          <span class="stat-label">yrs sales<br>experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">$5M<span style="font-size:9pt">+</span></span>
+          <span class="stat-label">annual<br>revenue</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">200<span style="font-size:9pt">+</span></span>
+          <span class="stat-label">clients<br>closed</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Core Skills</div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Sales Execution</div>
+          <div class="skill-tags">
+            <span class="tag hot">Enterprise Sales</span>
+            <span class="tag hot">Pipeline Mgmt</span>
+            <span class="tag">Deal Closing</span>
+            <span class="tag">Quota Attainment</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Leadership</div>
+          <div class="skill-tags">
+            <span class="tag hot">Team Building</span>
+            <span class="tag">Sales Coaching</span>
+            <span class="tag">Forecasting</span>
+            <span class="tag">Channel Partners</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Tools &amp; CRM</div>
+          <div class="skill-tags">
+            <span class="tag hot">Salesforce</span>
+            <span class="tag">HubSpot</span>
+            <span class="tag">Outreach.io</span>
+            <span class="tag">LinkedIn Sales Nav</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Languages</div>
+          <div class="skill-tags">
+            <span class="tag">English (Native)</span>
+            <span class="tag">Mandarin (Native)</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Certifications</div>
+        <div class="cert-strip">
+          <span class="cert-badge">Salesforce Certified</span>
+          <span class="cert-badge">SPIN Selling</span>
+          <span class="cert-badge">Challenger Sale</span>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- Main col -->
+    <div class="main-col">
+
+      <div>
+        <div class="sec-title">Professional Summary</div>
+        <div class="summary-text">
+          Results-driven sales leader with <strong>10 years of enterprise and mid-market SaaS sales</strong> experience,
+          including tenures at <strong>Salesforce and HubSpot</strong>. Consistent quota over-achiever — avg. <strong>128% of target</strong>
+          across the last 5 fiscal years. Built and scaled a 0→8 SDR team that grew team revenue from
+          <strong>$800K to $3.2M</strong> in two years. Known for a consultative, trust-first sales approach that drives
+          long-term retention: avg. customer lifetime &gt;3.5 years. Bilingual in English and Mandarin,
+          with deep experience opening enterprise accounts across APAC and North America.
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Experience</div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">Salesforce</div>
+            <div class="job-date">Mar 2021 — Present</div>
+          </div>
+          <div class="job-role">Senior Account Executive — Enterprise (APAC)</div>
+          <ul class="job-bullets">
+            <li>Manage a <strong>$4.8M annual quota</strong> across 25 enterprise accounts; FY24 attainment <strong>142%</strong></li>
+            <li>Closed <strong>$1.2M single deal</strong> with a Tier-1 automotive manufacturer — largest deal in APAC region that quarter</li>
+            <li>Developed 12 channel partner relationships accounting for <strong>30% of team revenue</strong></li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">HubSpot</div>
+            <div class="job-date">Jun 2018 — Feb 2021</div>
+          </div>
+          <div class="job-role">Sales Manager — Mid-Market</div>
+          <ul class="job-bullets">
+            <li>Built SDR team from <strong>0 to 8 reps</strong>; grew team revenue from $800K to <strong>$3.2M in 24 months</strong></li>
+            <li>Ran weekly pipeline reviews and deal coaching — team avg quota attainment <strong>118%</strong></li>
+            <li>Authored a <strong>Sales Playbook</strong> later adopted across 3 global regions</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">Oracle</div>
+            <div class="job-date">Aug 2015 — May 2018</div>
+          </div>
+          <div class="job-role">Account Manager — Mid-Market</div>
+          <ul class="job-bullets">
+            <li>Consistent <strong>top-10%</strong> performer; opened a new Healthcare vertical generating <strong>$2M pipeline</strong> in year one</li>
+            <li>Managed 60+ mid-market accounts across manufacturing and retail verticals</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">Zendesk</div>
+            <div class="job-date">Jul 2013 — Jul 2015</div>
+          </div>
+          <div class="job-role">Inside Sales Representative — SMB</div>
+          <ul class="job-bullets">
+            <li>Closed <strong>150+ SMB accounts</strong> over 2 years; ranked <strong>#2 globally</strong> in new logo attainment in Q3 2014</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div><!-- /main-col -->
+  </div><!-- /p1-body -->
+
+  <div class="p1-footer">
+    <div class="p1-footer-left">Integrity · Consistency · Results</div>
+    <div class="p1-footer-right">→ Page 2: Key Wins &amp; Evidence</div>
+  </div>
+
+</div><!-- /page1 -->
+
+
+<!-- ══════════════ PAGE 2 ══════════════ -->
+<div class="page page2">
+
+  <div class="p2-topbar">
+    <div class="p2-topbar-name">Adam Chen &nbsp;|&nbsp; Senior Sales Manager</div>
+    <div class="p2-topbar-links">linkedin.com/in/adam-chen-sh &nbsp;·&nbsp; adamchen.me</div>
+  </div>
+
+  <div class="p2-body">
+
+    <!-- Projects / Key Wins -->
+    <div class="p2-main">
+      <div class="sec2-title">Key Wins &amp; Detailed Evidence</div>
+
+      <div class="proj-card" style="border-left-color:#c8956c">
+        <div class="proj-header">
+          <div class="proj-name">[W1] $1.2M Enterprise Deal Close — Automotive</div>
+          <span class="proj-tag">Salesforce · FY2024 Q4</span>
+        </div>
+        <div class="proj-sub">Largest single deal in APAC region · 18-month sales cycle</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> Tier-1 automotive OEM with fragmented CRM stack across 6 subsidiaries; RFP involved 4 competing vendors</li>
+          <li><strong>Approach:</strong> Built executive relationships at C-suite level; ran 3 tailored demos; coordinated a 5-person Salesforce solution team</li>
+          <li><strong>Result:</strong> Closed $1.2M ACV deal; customer expanded to 2 additional modules in following quarter (+$380K upsell)</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#e8c99d">
+        <div class="proj-header">
+          <div class="proj-name">[W2] SDR Team Build — 0 → 8 Reps, $800K → $3.2M</div>
+          <span class="proj-tag">HubSpot · 2018–2021</span>
+        </div>
+        <div class="proj-sub">Team leadership · Revenue growth 4× in 24 months</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> HubSpot APAC mid-market had no structured SDR function; pipeline was ad-hoc and inconsistent</li>
+          <li><strong>Approach:</strong> Recruited, hired and onboarded 8 reps; designed ICP targeting, outreach cadences and KPI dashboards</li>
+          <li><strong>Result:</strong> Team revenue grew from $800K → $3.2M in 24 months; Sales Playbook adopted across 3 global regions</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#a8855a">
+        <div class="proj-header">
+          <div class="proj-name">[W3] Healthcare Vertical Expansion — Oracle</div>
+          <span class="proj-tag">Oracle · 2016</span>
+        </div>
+        <div class="proj-sub">New market · $2M pipeline in year one</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> Oracle had minimal presence in China healthcare; territory was entirely greenfield</li>
+          <li><strong>Approach:</strong> Mapped key hospital groups and private clinic chains; partnered with local SI partners for warm introductions</li>
+          <li><strong>Result:</strong> $2M qualified pipeline in first 12 months; 3 deals closed totaling $640K ACV</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#6b7280">
+        <div class="proj-header">
+          <div class="proj-name">[W4] Channel Partner Program — Salesforce APAC</div>
+          <span class="proj-tag">Salesforce · 2022–2024</span>
+        </div>
+        <div class="proj-sub">12 partners onboarded · 30% of team revenue</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> APAC enterprise segment needed indirect coverage for SME-to-mid-market accounts</li>
+          <li><strong>Approach:</strong> Identified, vetted and onboarded 12 channel partners; built joint go-to-market plays and co-sell training</li>
+          <li><strong>Result:</strong> Partner channel now contributes 30% of team bookings with lower CAC than direct motion</li>
+        </ul>
+      </div>
+
+    </div><!-- /p2-main -->
+
+    <!-- Sidebar -->
+    <div class="p2-sidebar">
+
+      <div>
+        <div class="sec2-title">Earlier Experience</div>
+        <div class="prev-job">
+          <div class="prev-job-name">Zendesk</div>
+          <div class="prev-job-role">Inside Sales Rep — SMB</div>
+          <div class="prev-job-date">Jul 2013 — Jul 2015</div>
+          <div class="prev-job-note">150+ SMB accounts closed; ranked #2 globally in new logo attainment Q3 2014</div>
+        </div>
+        <div class="prev-job">
+          <div class="prev-job-name">Dreamforce 2023</div>
+          <div class="prev-job-role">Conference Speaker</div>
+          <div class="prev-job-date">Oct 2023</div>
+          <div class="prev-job-note">"Building Trust-First Enterprise Sales in APAC" — 500+ attendees</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec2-title">Education</div>
+        <div class="edu-block">
+          <div class="edu-school">Fudan University</div>
+          <div class="edu-degree">Business Administration · Bachelor's</div>
+          <div class="edu-year">2009 — 2013</div>
+        </div>
+        <div style="font-size:7.5pt; color:#555; margin-top:6px">
+          · Dean's List, 3 consecutive years<br>
+          · President, Sales &amp; Commerce Society
+        </div>
+      </div>
+
+      <div class="links-box">
+        <div class="links-box-title">Links &amp; Resources</div>
+        <div class="link-row">
+          <div class="link-icon">LN</div>
+          <div class="link-text">linkedin.com/in/adam-chen-sh</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">WB</div>
+          <div class="link-text">adamchen.me</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">SF</div>
+          <div class="link-text">Salesforce Certified Admin</div>
+        </div>
+        <div class="kw-row">
+          <span class="kw-chip">Enterprise</span>
+          <span class="kw-chip">SaaS</span>
+          <span class="kw-chip">APAC</span>
+          <span class="kw-chip">Revenue</span>
+          <span class="kw-chip">CRM</span>
+        </div>
+      </div>
+
+    </div><!-- /p2-sidebar -->
+  </div><!-- /p2-body -->
+
+  <div class="page-num">Page 2 / 2</div>
+
+</div><!-- /page2 -->
+
+</body>
+</html>

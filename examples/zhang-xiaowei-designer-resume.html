@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>张晓薇 — UI/UX 设计师简历</title>
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 170mm;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.45;
+  color: #1a1a2e;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── MACARON PALETTE ── */
+:root {
+  --p1-bg-start:   #1f0d2e;
+  --p1-bg-mid:     #2e1645;
+  --p1-bg-end:     #3a1f4f;
+  --accent-bar:    linear-gradient(90deg, #f9a8d4, #c084fc, #6ee7b7);
+  --primary:       #f472b6;
+  --primary-light: #c084fc;
+  --primary-glow:  rgba(192,132,252,0.22);
+  --text-hero:     #ffffff;
+  --text-main:     #f3e8ff;
+  --text-muted:    #dbb6f5;
+  --text-dim:      #b07ed6;
+  --tag-bg:        rgba(255,255,255,0.08);
+  --tag-border:    rgba(249,168,212,0.25);
+  --tag-hot-bg:    rgba(244,114,182,0.28);
+  --tag-hot-color: #fce7f3;
+  --sidebar-bg:    rgba(255,255,255,0.04);
+  --divider:       rgba(249,168,212,0.12);
+  --stat-num:      #c084fc;
+  --p2-bg:         #fdf4ff;
+  --p2-topbar-s:   #2e1645;
+  --p2-topbar-e:   #7c3aed;
+  --card-shadow:   rgba(100,0,120,0.07);
+  --edu-bg-s:      #fce7f3;
+  --edu-bg-e:      #f3e8ff;
+  --links-bg-s:    #2e1645;
+  --links-bg-e:    #7c3aed;
+}
+
+/* ── PAGE ── */
+.page {
+  width: 170mm;
+  min-height: 234mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+/* ════════ PAGE 1 ════════ */
+.page1 {
+  background: linear-gradient(160deg, var(--p1-bg-start) 0%, var(--p1-bg-mid) 50%, var(--p1-bg-end) 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.accent-bar {
+  height: 4px;
+  background: var(--accent-bar);
+  flex-shrink: 0;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.avatar-initials {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary-light);
+  box-shadow: 0 0 0 5px var(--primary-glow), 0 8px 24px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26pt;
+  font-weight: 900;
+  color: var(--primary-light);
+  background: rgba(192,132,252,0.1);
+  flex-shrink: 0;
+  letter-spacing: -1px;
+}
+
+.hero-text { flex: 1; }
+.hero-name {
+  font-size: 28pt;
+  font-weight: 900;
+  color: var(--text-hero);
+  letter-spacing: 3px;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.hero-name-en {
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.hero-title {
+  font-size: 9pt;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+  font-size: 7.5pt;
+  color: var(--text-muted);
+}
+.dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* Badges */
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.badge-item {
+  background: rgba(192,132,252,0.13);
+  border: 1px solid rgba(192,132,252,0.32);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 0.3px;
+}
+
+/* Body layout */
+.p1-body {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  padding: 14px 0 0;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 72mm;
+  flex-shrink: 0;
+  padding: 0 16px 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--divider);
+}
+
+.sec-title {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  border-bottom: 1px solid rgba(192,132,252,0.22);
+  padding-bottom: 4px;
+  margin-bottom: 7px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+  font-size: 7.8pt;
+}
+.contact-icon {
+  width: 18px; height: 18px;
+  background: rgba(192,132,252,0.18);
+  border: 1px solid rgba(192,132,252,0.3);
+  border-radius: 4px;
+  font-size: 6pt;
+  font-weight: 700;
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 7.8pt;
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  background: rgba(192,132,252,0.07);
+  border: 1px solid rgba(192,132,252,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  border-right: 1px solid rgba(192,132,252,0.12);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 16pt;
+  font-weight: 900;
+  color: var(--stat-num);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 6pt;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+
+/* Skills */
+.skill-block { margin-bottom: 6px; }
+.skill-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.tag {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 12px;
+  padding: 1px 7px;
+  font-size: 6.8pt;
+  color: var(--text-muted);
+}
+.tag.hot {
+  background: var(--tag-hot-bg);
+  border-color: rgba(244,114,182,0.4);
+  color: var(--tag-hot-color);
+  font-weight: 700;
+}
+
+/* Main col */
+.main-col {
+  flex: 1;
+  padding: 0 24px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summary-text {
+  font-size: 8.5pt;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+.summary-text strong { color: var(--primary-light); }
+
+.job-entry { margin-bottom: 10px; }
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1px;
+}
+.job-company {
+  font-size: 9pt;
+  font-weight: 800;
+  color: var(--text-hero);
+}
+.job-date {
+  font-size: 7pt;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.job-role {
+  font-size: 8pt;
+  color: var(--primary-light);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.job-bullets {
+  padding-left: 14px;
+  color: var(--text-main);
+  font-size: 8pt;
+}
+.job-bullets li { margin-bottom: 2px; }
+.job-bullets strong { color: var(--text-hero); }
+
+/* Footer */
+.p1-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  border-top: 1px solid var(--divider);
+  margin-top: auto;
+}
+.p1-footer-left { font-size: 7pt; color: var(--text-dim); }
+.p1-footer-right { font-size: 7pt; color: var(--primary-light); font-weight: 600; }
+
+/* ════════ PAGE 2 ════════ */
+.page2 {
+  background: var(--p2-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.p2-topbar {
+  background: linear-gradient(90deg, var(--p2-topbar-s), var(--p2-topbar-e));
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.p2-topbar-name {
+  font-size: 10pt;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+.p2-topbar-links {
+  font-size: 7.5pt;
+  color: rgba(255,255,255,0.7);
+}
+
+.p2-body {
+  display: flex;
+  flex: 1;
+  padding: 14px;
+  gap: 12px;
+}
+
+.p2-main { flex: 1; }
+.p2-sidebar {
+  width: 58mm;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sec2-title {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #7c3aed;
+  border-bottom: 2px solid #f472b6;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+.proj-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-left: 3px solid #f472b6;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.proj-name {
+  font-size: 8.5pt;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+.proj-tag {
+  font-size: 6.5pt;
+  color: #888;
+  background: #f3e8ff;
+  border-radius: 10px;
+  padding: 1px 7px;
+}
+.proj-sub {
+  font-size: 7.5pt;
+  color: #7c3aed;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.proj-bullets {
+  padding-left: 13px;
+  font-size: 7.8pt;
+  color: #334155;
+}
+.proj-bullets li { margin-bottom: 2px; }
+.proj-bullets strong { color: #1a1a2e; }
+
+.prev-job { margin-bottom: 8px; }
+.prev-job-name { font-size: 8pt; font-weight: 700; color: #1a1a2e; }
+.prev-job-role { font-size: 7.5pt; color: #7c3aed; font-weight: 600; }
+.prev-job-date { font-size: 7pt; color: #888; }
+.prev-job-note { font-size: 7.5pt; color: #555; margin-top: 2px; }
+
+.edu-block {
+  background: linear-gradient(135deg, var(--edu-bg-s), var(--edu-bg-e));
+  border-radius: 8px;
+  padding: 9px 11px;
+}
+.edu-school { font-size: 8.5pt; font-weight: 800; color: #1a1a2e; }
+.edu-degree { font-size: 7.5pt; color: #7c3aed; font-weight: 600; margin-top: 2px; }
+.edu-year { font-size: 7pt; color: #888; margin-top: 2px; }
+
+.links-box {
+  background: linear-gradient(135deg, var(--links-bg-s), var(--links-bg-e));
+  border-radius: 10px;
+  padding: 11px 13px;
+}
+.links-box-title {
+  font-size: 7pt;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.link-icon {
+  width: 18px; height: 18px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.link-text { font-size: 7.5pt; color: rgba(255,255,255,0.85); }
+.kw-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.kw-chip {
+  background: rgba(249,168,212,0.25);
+  border: 1px solid rgba(249,168,212,0.4);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 6.5pt;
+  color: #fce7f3;
+}
+
+.page-num {
+  text-align: right;
+  padding: 6px 14px;
+  font-size: 7pt;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE 1 ══════════════ -->
+<div class="page page1">
+
+  <div class="accent-bar"></div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="avatar-initials">薇</div>
+    <div class="hero-text">
+      <div class="hero-name">张晓薇</div>
+      <div class="hero-name-en">Zhang Xiaowei &nbsp;·&nbsp; UI/UX Designer</div>
+      <div class="hero-title">视觉设计师 | UI/UX 设计师 | 品牌创意负责人</div>
+      <div class="hero-meta">
+        <span><span class="dot"></span>上海 / Remote</span>
+        <span><span class="dot"></span>186-xxxx-8821</span>
+        <span><span class="dot"></span>xiaowei@example.com</span>
+        <span><span class="dot"></span>期望薪资：<strong style="color:#c084fc">25–40K</strong></span>
+        <span><span class="dot"></span>全职 / 可远程</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges -->
+  <div class="badges-row">
+    <span class="badge-item">Figma</span>
+    <span class="badge-item">Adobe XD</span>
+    <span class="badge-item">Illustrator</span>
+    <span class="badge-item">After Effects</span>
+    <span class="badge-item">Sketch</span>
+    <span class="badge-item">Design System</span>
+    <span class="badge-item">Motion Design</span>
+    <span class="badge-item">Brand Identity</span>
+    <span class="badge-item">User Research</span>
+    <span class="badge-item">Prototyping</span>
+    <span class="badge-item">CSS / HTML</span>
+    <span class="badge-item">字体设计</span>
+  </div>
+
+  <!-- Body -->
+  <div class="p1-body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div>
+        <div class="sec-title">联系方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">BE</div>
+          <a class="contact-link">behance.net/zhangxiaowei</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">DR</div>
+          <a class="contact-link">dribbble.com/xw_design</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">LN</div>
+          <a class="contact-link">linkedin.com/in/xiaowei-zhang</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">WB</div>
+          <a class="contact-link">xw-design.studio</a>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">8</span>
+          <span class="stat-label">年设计<br>经验</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">50<span style="font-size:10pt">+</span></span>
+          <span class="stat-label">项目<br>交付</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-label">品牌从<br>0到1</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">核心技能</div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 设计工具</div>
+          <div class="skill-tags">
+            <span class="tag hot">Figma</span>
+            <span class="tag hot">Illustrator</span>
+            <span class="tag">Adobe XD</span>
+            <span class="tag">Sketch</span>
+            <span class="tag">Photoshop</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 动效 / 原型</div>
+          <div class="skill-tags">
+            <span class="tag hot">After Effects</span>
+            <span class="tag">Principle</span>
+            <span class="tag">Lottie</span>
+            <span class="tag">Framer</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 前端基础</div>
+          <div class="skill-tags">
+            <span class="tag">CSS</span>
+            <span class="tag">HTML</span>
+            <span class="tag">Tailwind</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 设计方法</div>
+          <div class="skill-tags">
+            <span class="tag hot">Design System</span>
+            <span class="tag">User Research</span>
+            <span class="tag">A/B Test</span>
+            <span class="tag">Brand VI</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- Main col -->
+    <div class="main-col">
+
+      <div>
+        <div class="sec-title">Professional Summary</div>
+        <div class="summary-text">
+          8年互联网产品设计经验，先后在<strong>字节跳动、小红书、网易游戏</strong>担任核心设计角色。
+          专注 <strong>UI/UX 系统化设计</strong>与<strong>品牌视觉创意</strong>，主导过抖音国际化设计系统（覆盖12个语言方向）
+          和小红书618大促全链路视觉（GMV破10亿）。具备从0到1独立完成品牌建设的完整能力，
+          同时拥有<strong>动效设计</strong>与基础前端还原落地能力，善于在审美与业务数据之间找到平衡点。
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Experience</div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">字节跳动（抖音国际化部门）</div>
+            <div class="job-date">2021.03 — 2025.01</div>
+          </div>
+          <div class="job-role">高级 UI/UX 设计师</div>
+          <ul class="job-bullets">
+            <li>主导 <strong>TikTok 国际版设计系统</strong>搭建，覆盖 iOS / Android / Web 三端，组件超过 280 个</li>
+            <li>负责评论区、创作工具模块改版，新版上线后 App Store 评分从 4.2 提升至 <strong>4.5 分</strong></li>
+            <li>推动设计 Handoff 流程规范化，设计→研发沟通效率提升 <strong>40%</strong></li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">小红书</div>
+            <div class="job-date">2019.06 — 2021.02</div>
+          </div>
+          <div class="job-role">品牌设计师（大促专项）</div>
+          <ul class="job-bullets">
+            <li>独立主理 <strong>618 大促全链路视觉体系</strong>，涵盖启动页、Banner、落地页、站外广告，GMV 破 <strong>10 亿</strong></li>
+            <li>输出平台视觉规范 2.0，统一 30+ 业务线的界面风格，减少返工率 <strong>55%</strong></li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">网易游戏</div>
+            <div class="job-date">2017.07 — 2019.05</div>
+          </div>
+          <div class="job-role">UI 设计师（手游方向）</div>
+          <ul class="job-bullets">
+            <li>负责《梦幻西游》手游全部 UI 界面从 0 到 1 设计，上线首周流水 <strong>超 8000 万</strong></li>
+            <li>建立游戏 UI 组件库，后续3款手游复用率达 <strong>60%</strong></li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">喜马拉雅</div>
+            <div class="job-date">2016.07 — 2017.06</div>
+          </div>
+          <div class="job-role">UI 设计师（初级）</div>
+          <ul class="job-bullets">
+            <li>参与主 App 播客界面改版，日活用户提升 <strong>18%</strong>，获季度设计之星</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div><!-- /main-col -->
+  </div><!-- /p1-body -->
+
+  <div class="p1-footer">
+    <div class="p1-footer-left">视觉即语言 · 设计即沟通</div>
+    <div class="p1-footer-right">→ 第 2 页：项目作品与详细证据</div>
+  </div>
+
+</div><!-- /page1 -->
+
+
+<!-- ══════════════ PAGE 2 ══════════════ -->
+<div class="page page2">
+
+  <div class="p2-topbar">
+    <div class="p2-topbar-name">张晓薇 Zhang Xiaowei &nbsp;|&nbsp; UI/UX Designer</div>
+    <div class="p2-topbar-links">behance.net/zhangxiaowei &nbsp;·&nbsp; xw-design.studio</div>
+  </div>
+
+  <div class="p2-body">
+
+    <!-- Projects -->
+    <div class="p2-main">
+      <div class="sec2-title">Selected Projects &amp; Portfolio Evidence</div>
+
+      <div class="proj-card" style="border-left-color:#f472b6">
+        <div class="proj-header">
+          <div class="proj-name">[P1] TikTok 国际版 UI 设计系统</div>
+          <span class="proj-tag">字节跳动 · 2022–2024</span>
+        </div>
+        <div class="proj-sub">跨端设计系统 · 280+ 组件 · 覆盖 12 语言</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>TikTok 国际化扩张，多团队并行开发导致 UI 碎片化严重，设计一致性不足</li>
+          <li><strong>方案：</strong>主导建立 Figma 设计系统，制定 Token 规范、组件命名标准与使用文档</li>
+          <li><strong>成果：</strong>组件库被 6 个业务团队复用，新页面设计效率提升 <strong>60%</strong>，App Store 评分 4.5↑</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#c084fc">
+        <div class="proj-header">
+          <div class="proj-name">[P2] 小红书 618 大促视觉体系</div>
+          <span class="proj-tag">小红书 · 2020</span>
+        </div>
+        <div class="proj-sub">全链路大促视觉 · GMV 破 10 亿</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>618 是全年最大节点，需要统一启动页、首页 Banner、落地页、站外广告全套视觉</li>
+          <li><strong>方案：</strong>提炼「玫瑰金+珊瑚橘」双色主调，设计 50+ 素材，同步输出动效规范</li>
+          <li><strong>成果：</strong>大促期间 GMV 达 10.3 亿，较上年增长 <strong>230%</strong>，视觉方案被内部评为最佳实践</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#6ee7b7">
+        <div class="proj-header">
+          <div class="proj-name">[P3] 「薇体」商业字体设计</div>
+          <span class="proj-tag">个人项目 · 2023</span>
+        </div>
+        <div class="proj-sub">原创中文字体 · 已商业授权 · 覆盖 6763 常用字</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>市场缺少具有东方美学气韵且适配现代 UI 的中文字体</li>
+          <li><strong>方案：</strong>历时 14 个月，完成 6763 汉字设计，采用「宋楷融合」风格，兼顾屏幕渲染</li>
+          <li><strong>成果：</strong>字体上线即获 3 家品牌授权，首年授权收入 <strong>¥12 万</strong></li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#fb923c">
+        <div class="proj-header">
+          <div class="proj-name">[P4] 《梦幻西游》手游 UI 全流程</div>
+          <span class="proj-tag">网易游戏 · 2017–2019</span>
+        </div>
+        <div class="proj-sub">手游 UI 从 0 到 1 · 首周流水 8000 万+</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>经典 IP 手游化，需在保留原著国风气质的同时适应触屏交互</li>
+          <li><strong>方案：</strong>从世界观提炼「水墨丹青」设计语言，独立完成 300+ 个界面的设计与输出</li>
+          <li><strong>成果：</strong>上线首周流水超 8000 万，界面评分在 TapTap 获得 4.7 分（设计维度）</li>
+        </ul>
+      </div>
+
+    </div><!-- /p2-main -->
+
+    <!-- Sidebar -->
+    <div class="p2-sidebar">
+
+      <div>
+        <div class="sec2-title">Earlier Experience</div>
+        <div class="prev-job">
+          <div class="prev-job-name">喜马拉雅</div>
+          <div class="prev-job-role">UI 设计师（初级）</div>
+          <div class="prev-job-date">2016.07 — 2017.06</div>
+          <div class="prev-job-note">主 App 播客界面改版，日活 +18%，获季度设计之星</div>
+        </div>
+        <div class="prev-job">
+          <div class="prev-job-name">独立接单（兼职）</div>
+          <div class="prev-job-role">自由品牌设计师</div>
+          <div class="prev-job-date">2016 — 至今</div>
+          <div class="prev-job-note">为 3 家创业公司完成 VI 系统从 0 到 1，包含 Logo、色彩、印刷规范</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec2-title">Education</div>
+        <div class="edu-block" style="background: linear-gradient(135deg, #fce7f3, #f3e8ff); border-radius: 8px; padding: 9px 11px; margin-bottom:8px">
+          <div class="edu-school">同济大学</div>
+          <div class="edu-degree" style="font-size:7.5pt; color:#7c3aed; font-weight:600; margin-top:2px">视觉传达设计 · 本科</div>
+          <div class="edu-year" style="font-size:7pt; color:#888; margin-top:2px">2012 — 2016</div>
+        </div>
+        <div style="font-size:7.5pt; color:#555; margin-top:4px">
+          · 毕业设计《汉字之美》获优秀毕业设计<br>
+          · 在校期间获两次设计类奖学金
+        </div>
+      </div>
+
+      <div class="links-box">
+        <div class="links-box-title">Links &amp; Portfolio</div>
+        <div class="link-row">
+          <div class="link-icon">BE</div>
+          <div class="link-text">behance.net/zhangxiaowei</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">DR</div>
+          <div class="link-text">dribbble.com/xw_design</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">WB</div>
+          <div class="link-text">xw-design.studio</div>
+        </div>
+        <div class="kw-row">
+          <span class="kw-chip">UI Design</span>
+          <span class="kw-chip">Brand</span>
+          <span class="kw-chip">Motion</span>
+          <span class="kw-chip">Figma</span>
+          <span class="kw-chip">Design System</span>
+        </div>
+      </div>
+
+    </div><!-- /p2-sidebar -->
+  </div><!-- /p2-body -->
+
+  <div class="page-num">Page 2 / 2</div>
+
+</div><!-- /page2 -->
+
+</body>
+</html>

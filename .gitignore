@@ -1,7 +1,9 @@
-# Output files
+# Output files (generated resumes — not tracked)
 *.pdf
-*.html
 outputs/
+# Ignore HTML except examples/ demos
+*.html
+!examples/*.html
 
 # Python
 __pycache__/

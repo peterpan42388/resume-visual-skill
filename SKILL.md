@@ -102,6 +102,33 @@ Synthesize — don't just copy-paste. Write punchy, recruiter-optimized bullets.
 
 Read `references/design-system.md` for full CSS variables, color palettes, and layout specs.
 
+### ⚠️ Page Width Rule — No Right Blank
+
+**Always set `.page { width: 170mm }`, NOT `210mm` (full A4).**
+
+The 2-column layout (72mm sidebar + flex main) only fills ~160–172mm of horizontal space.
+Using 210mm leaves a 40–50mm white blank on the right — never acceptable in final output.
+
+```css
+/* CRITICAL: html and body must share the same width as .page */
+html, body {
+  width: 170mm;          /* Must match .page width exactly */
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  width: 170mm;          /* NOT 210mm — eliminates right-side blank */
+  min-height: 234mm;     /* Trim bottom blank via pypdf if needed */
+  ...
+}
+```
+
+**Both `html/body` and `.page` must have `width: 170mm`.** If only `.page` is set,
+the browser body still fills the viewport width, producing a white blank to the right of every page.
+
+If trimming a PDF after export, use the pypdf step in Phase 4.5.
+
 **Page 1 — Hero / Ad Page:**
 - Dark gradient background (configurable via preset)
 - Large name + title in hero zone with circular avatar photo
@@ -129,6 +156,8 @@ Read `references/design-system.md` for full CSS variables, color palettes, and l
 
 ## Phase 4 — Output Delivery
 
+> **Before delivery, always run Phase 4.5 — blank trim check (see below).**
+
 Deliver in this order:
 
 1. **Markdown preview** — show page 1 / page 2 content outline for user confirmation
@@ -148,6 +177,54 @@ Deliver in this order:
 4. 选择 "Save as PDF"
 → 这是保留所有视觉效果的最佳方式
 ```
+
+---
+
+## Phase 4.5 — Blank Trim (Mandatory Finishing Step)
+
+After generating the HTML, always perform the following checks before delivery:
+
+### Step A — HTML page width check
+
+Verify `.page { width }` is set to **170mm** (not 210mm).
+If not, fix it before outputting the file.
+
+### Step B — Bottom blank check
+
+After the user views the HTML in browser, measure if Page 1 or Page 2 has excessive
+bottom white space (more than ~8mm). If yes, either:
+- Reduce `min-height` on `.page` in the HTML, or
+- Use the pypdf crop after wkhtmltopdf export (see below)
+
+### Step C — pypdf crop for PDF (if PDF is generated)
+
+```python
+from pypdf import PdfReader, PdfWriter
+from pypdf.generic import RectangleObject
+
+mm = lambda x: x * 2.8346          # mm → PDF points
+
+reader = PdfReader("output_raw.pdf")
+writer = PdfWriter()
+
+TARGET_W = mm(170)   # match HTML .page width
+TARGET_H = mm(234)   # measure content height; adjust per resume
+
+for page in reader.pages:
+    orig_h = float(page.mediabox.height)
+    # keep bottom of content; crop from top to TARGET_H
+    new_bottom = orig_h - TARGET_H
+    rect = RectangleObject([0, new_bottom, TARGET_W, orig_h])
+    page.mediabox = rect
+    page.cropbox  = rect
+    writer.add_page(page)
+
+with open("output_trimmed.pdf", "wb") as f:
+    writer.write(f)
+```
+
+**Rule: both pages must have identical dimensions.**
+Measure Page 1 height first, then apply the same rect to Page 2.
 
 ---
 

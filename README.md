@@ -15,12 +15,13 @@ Built from a real production session. Proven in actual job applications.
 
 ### Example Output
 
-| Page 1 — Hero / Ad Page | Page 2 — Evidence Page |
-|------------------------|------------------------|
-| Dark gradient background | Light clean background |
-| Avatar photo + name hero | Project cards (color-coded) |
-| Pill-style skill badges | Earlier experience + education |
-| Stats: 14年 / 3 products / 20+ projects | Links box + keyword chips |
+#### 🌸 张晓薇 — UI/UX Designer · Macaron Palette
+
+<img src="examples/zhang-resume-preview.png" alt="Zhang Xiaowei Designer Resume — Macaron" width="480"/>
+
+#### 🪵 Adam Chen — Sales Manager · Japanese Home Palette
+
+<img src="examples/adam-resume-preview.png" alt="Adam Chen Sales Resume — Japanese Home" width="480"/>
 
 ---
 
@@ -28,13 +29,17 @@ Built from a real production session. Proven in actual job applications.
 
 ```
 resume-visual-skill/
-├── SKILL.md                          # Main skill — triggers + workflow
+├── SKILL.md                               # Main skill — triggers + workflow
 ├── references/
-│   ├── conversation-flow.md          # Intake dialogue script
-│   ├── design-system.md              # CSS tokens, 5 color presets, layout specs
-│   └── html-template.md              # Annotated base HTML structure
+│   ├── conversation-flow.md               # Intake dialogue script
+│   ├── design-system.md                   # CSS tokens, 5 color presets, layout specs
+│   └── html-template.md                   # Annotated base HTML structure
 └── examples/
-    └── leo-resume-case.md            # Real production case study
+    ├── alex-resume-case.md                # Production case study (anonymized)
+    ├── zhang-xiaowei-designer-resume.html # Demo: Designer · Macaron palette
+    ├── adam-chen-sales-resume.html        # Demo: Sales · Japanese home palette
+    ├── zhang-resume-preview.png           # Screenshot — 张晓薇
+    └── adam-resume-preview.png            # Screenshot — Adam Chen
 ```
 
 ---
@@ -48,6 +53,8 @@ resume-visual-skill/
 | **Clean Minimal** | White + blue, airy | Product / design / finance |
 | **Warm Editorial** | Brown + orange, magazine-feel | Creative / education |
 | **Bold Red** | High-contrast red-black | Startup / sales |
+| **Macaron** 🌸 | Mauve + rose + lavender + mint | Design / creative / art |
+| **Japanese Home** 🪵 | Warm wood + sand + terracotta | Sales / consulting / BD |
 
 Users can also upload a reference image or describe their style in words.
 
@@ -125,7 +132,7 @@ Claude: 好的，开始生成！
 
 ## 📖 Case Study
 
-See [`examples/leo-resume-case.md`](examples/leo-resume-case.md) for the full production walkthrough:
+See [`examples/alex-resume-case.md`](examples/alex-resume-case.md) for the full production walkthrough:
 
 - AI Agent Engineer resume, 14 years experience
 - Dark Tech Blue style, 2-page layout

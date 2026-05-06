@@ -112,20 +112,23 @@ Using 210mm leaves a 40–50mm white blank on the right — never acceptable in 
 ```css
 /* CRITICAL: html and body must share the same width as .page */
 html, body {
-  width: 170mm;          /* Must match .page width exactly */
+  width: 170mm;   /* Must match .page width — prevents right-side blank */
   margin: 0;
   padding: 0;
 }
 
 .page {
-  width: 170mm;          /* NOT 210mm — eliminates right-side blank */
-  min-height: 234mm;     /* Trim bottom blank via pypdf if needed */
-  ...
+  width: 170mm;   /* NOT 210mm */
+  /* NO min-height — let content drive height, zero bottom blank */
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
 }
 ```
 
-**Both `html/body` and `.page` must have `width: 170mm`.** If only `.page` is set,
-the browser body still fills the viewport width, producing a white blank to the right of every page.
+**Rules:**
+- `html`, `body`, and `.page` must all share `width: 170mm`. If only `.page` is set, the browser body still fills the viewport, producing a white blank to the right.
+- **Never set `min-height`** on `.page`. A fixed min-height creates bottom blank when content is shorter. Height must be driven by content only.
 
 If trimming a PDF after export, use the pypdf step in Phase 4.5.
 

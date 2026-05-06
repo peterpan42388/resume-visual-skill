@@ -6,22 +6,27 @@ Built from a real production session. Proven in actual job applications.
 
 ---
 
+## 🖼 Output Examples
+
+<table>
+  <tr>
+    <td align="center"><b>🌸 张晓薇 — UI/UX Designer</b><br/><sub>Macaron Palette</sub></td>
+    <td align="center"><b>🪵 Adam Chen — Sales Manager</b><br/><sub>Japanese Home Palette</sub></td>
+  </tr>
+  <tr>
+    <td><img src="examples/zhang-resume-preview.png" alt="Zhang Xiaowei — Macaron" width="360"/></td>
+    <td><img src="examples/adam-resume-preview.png" alt="Adam Chen — Japanese Home" width="360"/></td>
+  </tr>
+</table>
+
+---
+
 ## ✨ What It Does
 
 1. **Runs a structured intake conversation** — collects resume content, photos, links, art direction
 2. **Extracts & rewrites content** — recruiter-optimized bullets, quantified achievements
 3. **Generates a high-end HTML resume** — self-contained, all images base64-inlined
 4. **Guides FireShot export** — best-quality PDF output via Chrome extension
-
-### Example Output
-
-#### 🌸 张晓薇 — UI/UX Designer · Macaron Palette
-
-<img src="examples/zhang-resume-preview.png" alt="Zhang Xiaowei Designer Resume — Macaron" width="480"/>
-
-#### 🪵 Adam Chen — Sales Manager · Japanese Home Palette
-
-<img src="examples/adam-resume-preview.png" alt="Adam Chen Sales Resume — Japanese Home" width="480"/>
 
 ---
 

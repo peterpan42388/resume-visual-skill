@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>何驱之 — 高级iOS开发工程师 · 阳光电源</title>
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  width: 170mm;
+  max-width: 170mm;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 170mm;
+  max-width: 170mm;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei',
+               'Helvetica Neue', sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.45;
+  color: #1a1a2e;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── DARK TECH BLUE ── */
+:root {
+  --p1-bg-start:   #061529;
+  --p1-bg-mid:     #0a2540;
+  --p1-bg-end:     #112a5e;
+  --accent-bar:    linear-gradient(90deg, #0A66C2, #00c6ff, #38bdf8);
+  --primary:       #0A66C2;
+  --primary-light: #38bdf8;
+  --primary-glow:  rgba(56,189,248,0.18);
+  --text-hero:     #ffffff;
+  --text-main:     #c8d8ec;
+  --text-muted:    #9bb8d8;
+  --text-dim:      #6a8aaa;
+  --tag-bg:        rgba(255,255,255,0.07);
+  --tag-border:    rgba(255,255,255,0.12);
+  --tag-hot-bg:    rgba(10,102,194,0.3);
+  --tag-hot-color: #7ed4fa;
+  --sidebar-bg:    rgba(255,255,255,0.03);
+  --divider:       rgba(255,255,255,0.06);
+  --stat-num:      #38bdf8;
+  --p2-bg:         #f7f9fc;
+  --card-shadow:   rgba(10,38,80,0.07);
+}
+
+.page {
+  width: 170mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+/* ════════ PAGE 1 ════════ */
+.page1 {
+  background: linear-gradient(160deg, var(--p1-bg-start) 0%, var(--p1-bg-mid) 50%, var(--p1-bg-end) 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.accent-bar {
+  height: 4px;
+  background: var(--accent-bar);
+  flex-shrink: 0;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px 13px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.avatar-initials {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary-light);
+  box-shadow: 0 0 0 5px var(--primary-glow), 0 8px 24px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24pt;
+  font-weight: 900;
+  color: var(--primary-light);
+  background: rgba(56,189,248,0.08);
+  flex-shrink: 0;
+  letter-spacing: -1px;
+}
+
+.hero-text { flex: 1; }
+.hero-name {
+  font-size: 26pt;
+  font-weight: 900;
+  color: var(--text-hero);
+  letter-spacing: 4px;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.hero-name-sub {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 1.2px;
+  margin-bottom: 4px;
+}
+.hero-title {
+  font-size: 8.5pt;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 13px;
+  font-size: 7.5pt;
+  color: var(--text-muted);
+}
+.dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 9px 22px;
+  border-bottom: 1px solid var(--divider);
+}
+.badge-item {
+  background: rgba(56,189,248,0.12);
+  border: 1px solid rgba(56,189,248,0.28);
+  border-radius: 20px;
+  padding: 2px 9px;
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+
+.p1-body {
+  display: flex;
+  flex: 1;
+  padding: 13px 0 0;
+}
+
+.sidebar {
+  width: 68mm;
+  flex-shrink: 0;
+  padding: 0 14px 13px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--divider);
+}
+
+.sec-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  border-bottom: 1px solid rgba(56,189,248,0.2);
+  padding-bottom: 4px;
+  margin-bottom: 7px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.contact-icon {
+  width: 17px; height: 17px;
+  background: rgba(56,189,248,0.14);
+  border: 1px solid rgba(56,189,248,0.25);
+  border-radius: 4px;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 7.5pt;
+}
+
+.stats-row {
+  display: flex;
+  background: rgba(56,189,248,0.06);
+  border: 1px solid rgba(56,189,248,0.14);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7px 3px;
+  border-right: 1px solid rgba(56,189,248,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 15pt;
+  font-weight: 900;
+  color: var(--stat-num);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 5.8pt;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.skill-block { margin-bottom: 6px; }
+.skill-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.tag {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 12px;
+  padding: 1px 7px;
+  font-size: 6.8pt;
+  color: var(--text-muted);
+}
+.tag.hot {
+  background: var(--tag-hot-bg);
+  border-color: rgba(56,189,248,0.35);
+  color: var(--tag-hot-color);
+  font-weight: 700;
+}
+
+.main-col {
+  flex: 1;
+  padding: 0 22px 13px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.motivation-box {
+  background: rgba(56,189,248,0.07);
+  border: 1px solid rgba(56,189,248,0.2);
+  border-left: 3px solid #38bdf8;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 8pt;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+.motivation-box strong { color: var(--primary-light); }
+.motivation-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: 5px;
+}
+
+.target-badge {
+  display: inline-block;
+  background: rgba(56,189,248,0.18);
+  border: 1px solid rgba(56,189,248,0.4);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 6.5pt;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.summary-text {
+  font-size: 8.5pt;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+.summary-text strong { color: var(--primary-light); }
+
+.job-entry { margin-bottom: 10px; }
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1px;
+}
+.job-company {
+  font-size: 9pt;
+  font-weight: 800;
+  color: var(--text-hero);
+}
+.job-date {
+  font-size: 7pt;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.job-role {
+  font-size: 8pt;
+  color: var(--primary-light);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.job-bullets {
+  padding-left: 14px;
+  color: var(--text-main);
+  font-size: 8pt;
+}
+.job-bullets li { margin-bottom: 2px; }
+.job-bullets strong { color: var(--text-hero); }
+
+.p1-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 22px;
+  border-top: 1px solid var(--divider);
+}
+.p1-footer-left { font-size: 7pt; color: var(--text-dim); }
+.p1-footer-right { font-size: 7pt; color: var(--primary-light); font-weight: 600; }
+
+/* ════════ PAGE 2 ════════ */
+.page2 {
+  background: var(--p2-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.p2-topbar {
+  background: linear-gradient(90deg, #0a2540, #0A66C2);
+  padding: 9px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.p2-topbar-name {
+  font-size: 9.5pt;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+.p2-topbar-links {
+  font-size: 7.5pt;
+  color: rgba(255,255,255,0.7);
+}
+
+.p2-body {
+  display: flex;
+  flex: 1;
+  padding: 13px;
+  gap: 11px;
+}
+
+.p2-main { flex: 1; }
+.p2-sidebar {
+  width: 54mm;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.sec2-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #0A66C2;
+  border-bottom: 2px solid #0A66C2;
+  padding-bottom: 4px;
+  margin-bottom: 9px;
+}
+
+.proj-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-bottom: 8px;
+  border-left: 3px solid #0A66C2;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.proj-name {
+  font-size: 8.5pt;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+.proj-tag {
+  font-size: 6.5pt;
+  color: #888;
+  background: #e8f0fc;
+  border-radius: 10px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+.proj-sub {
+  font-size: 7.5pt;
+  color: #0A66C2;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.proj-bullets {
+  padding-left: 13px;
+  font-size: 7.8pt;
+  color: #334155;
+}
+.proj-bullets li { margin-bottom: 2px; }
+.proj-bullets strong { color: #1a1a2e; }
+
+.prev-job { margin-bottom: 8px; }
+.prev-job-name { font-size: 8pt; font-weight: 700; color: #1a1a2e; }
+.prev-job-role { font-size: 7.5pt; color: #0A66C2; font-weight: 600; }
+.prev-job-date { font-size: 7pt; color: #888; }
+.prev-job-note { font-size: 7.5pt; color: #555; margin-top: 2px; }
+
+.edu-block {
+  background: linear-gradient(135deg, #e8f0fc, #f0f4ff);
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-bottom: 6px;
+}
+.edu-school { font-size: 8.5pt; font-weight: 800; color: #1a1a2e; }
+.edu-degree { font-size: 7.5pt; color: #0A66C2; font-weight: 600; margin-top: 2px; }
+.edu-year { font-size: 7pt; color: #888; margin-top: 2px; }
+
+.links-box {
+  background: linear-gradient(135deg, #0a2540, #0A66C2);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.links-box-title {
+  font-size: 7pt;
+  font-weight: 700;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.link-icon {
+  width: 17px; height: 17px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.link-text { font-size: 7.5pt; color: rgba(255,255,255,0.85); }
+.kw-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.kw-chip {
+  background: rgba(56,189,248,0.22);
+  border: 1px solid rgba(56,189,248,0.35);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 6.5pt;
+  color: #bde8fb;
+}
+
+.page-num {
+  text-align: right;
+  padding: 5px 13px;
+  font-size: 7pt;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE 1 ══════════════ -->
+<div class="page page1">
+
+  <div class="accent-bar"></div>
+
+  <div class="hero">
+    <div class="avatar-initials">驱</div>
+    <div class="hero-text">
+      <div class="hero-name">何驱之</div>
+      <div class="hero-name-sub">Leo He &nbsp;·&nbsp; 高级 iOS 开发工程师</div>
+      <div class="hero-title">iOS 架构设计 &nbsp;|&nbsp; 性能调优 &nbsp;|&nbsp; IoT 移动端交付</div>
+      <div class="hero-meta">
+        <span><span class="dot"></span>深圳 / 接受外派德国慕尼黑</span>
+        <span><span class="dot"></span>leo@metavie.co</span>
+        <span><span class="dot"></span>期望薪资：面议</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="badges-row">
+    <span class="badge-item">Swift</span>
+    <span class="badge-item">Objective-C</span>
+    <span class="badge-item">iOS 架构设计</span>
+    <span class="badge-item">性能调优</span>
+    <span class="badge-item">Crash 分析</span>
+    <span class="badge-item">内存管理</span>
+    <span class="badge-item">模块化开发</span>
+    <span class="badge-item">UIKit / SwiftUI</span>
+    <span class="badge-item">CI/CD</span>
+    <span class="badge-item">IoT 集成</span>
+  </div>
+
+  <div class="p1-body">
+
+    <!-- 左侧栏 -->
+    <div class="sidebar">
+
+      <div>
+        <div class="sec-title">联系方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">GH</div>
+          <a class="contact-link">github.com/peterpan42388</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">LN</div>
+          <a class="contact-link">linkedin.com/in/quzhi-he-9229823b2</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">WB</div>
+          <a class="contact-link">metavie.co</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">ML</div>
+          <a class="contact-link">leo@metavie.co</a>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">12<span style="font-size:9pt">+</span></span>
+          <span class="stat-label">年iOS<br>开发</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">1M<span style="font-size:9pt">+</span></span>
+          <span class="stat-label">峰值<br>用户</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">49</span>
+          <span class="stat-label">款App<br>接入</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">核心技能</div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 开发语言</div>
+          <div class="skill-tags">
+            <span class="tag hot">Objective-C</span>
+            <span class="tag hot">Swift</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 框架 / SDK</div>
+          <div class="skill-tags">
+            <span class="tag hot">UIKit</span>
+            <span class="tag">SwiftUI</span>
+            <span class="tag">CoreBluetooth</span>
+            <span class="tag">CoreLocation</span>
+            <span class="tag">MapKit</span>
+            <span class="tag">CoreData</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 架构模式</div>
+          <div class="skill-tags">
+            <span class="tag hot">MVVM</span>
+            <span class="tag">MVC</span>
+            <span class="tag">组件化</span>
+            <span class="tag">Clean Arch</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 性能 / 调试</div>
+          <div class="skill-tags">
+            <span class="tag hot">Instruments</span>
+            <span class="tag">Crashlytics</span>
+            <span class="tag">Charles</span>
+            <span class="tag">LLDB</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 工程效率</div>
+          <div class="skill-tags">
+            <span class="tag">CI/CD</span>
+            <span class="tag">Fastlane</span>
+            <span class="tag">Git</span>
+            <span class="tag">XCTest</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ 语言</div>
+          <div class="skill-tags">
+            <span class="tag hot">英语（流利）</span>
+            <span class="tag">普通话（母语）</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- 主栏 -->
+    <div class="main-col">
+
+      <div>
+        <div class="target-badge">▶ 投递岗位：阳光电源 · 中高级iOS开发工程师 · 德国慕尼黑</div>
+        <div class="sec-title">求职意向</div>
+        <div class="motivation-box">
+          我应聘阳光电源德国慕尼黑团队的<strong>中高级iOS开发工程师</strong>岗位。
+          新能源领域是我有持续实践认知的方向——我曾自主设计并搭建家用屋顶光伏系统：
+          <strong>10块太阳能板、4组铅蓄电池、PLC变电控制</strong>，晴天日发电量约<strong>4度</strong>，
+          支持与市电自动切换。这段经历让我对能源系统的可靠性要求有直接的工程体感。<br><br>
+          我的移动端背景——IoT工业系统交付、大规模消费App架构——与阳光电源
+          EV充电及储能产品的移动端需求有清晰的交集。
+          我希望以扎实的iOS工程能力，加入一个在全球新能源领域有实质影响力的技术团队。
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">工作经历</div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">MetaVie Ltd &nbsp;<span style="font-size:7pt;color:#6a8aaa;font-weight:400">（英国注册）</span></div>
+            <div class="job-date">2025.08 — 至今</div>
+          </div>
+          <div class="job-role">创始人 &amp; 首席 iOS / 全栈开发</div>
+          <ul class="job-bullets">
+            <li>主导 <strong>OpenClaw</strong> 跨平台AI助手的 iOS/macOS 客户端研发（Swift/SwiftUI），接入 <strong>20+ 消息渠道</strong>（WhatsApp、Telegram、iMessage 等）</li>
+            <li>设计插件化模块架构，支持功能热插拔；集成 CoreBluetooth 实现 IoT 外设配对</li>
+            <li>实现多智能体路由引擎、语音唤醒、实时画布——产品已上线，每日活跃用户使用中</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">职业院校计算机教研室</div>
+            <div class="job-date">2023.09 — 2025.08</div>
+          </div>
+          <div class="job-role">计算机系负责人 &amp; 主讲教师</div>
+          <ul class="job-bullets">
+            <li>主导 iOS / 移动端课程体系建设，管理 10 个班级；统考平均分 <strong>380/490</strong>，科室从 3 个班扩展至 10 个</li>
+            <li>在职期间持续维护个人 iOS 工程项目，保持技术栈与生产实践同步</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">中海庭</div>
+            <div class="job-date">2020 — 2022</div>
+          </div>
+          <div class="job-role">iOS / Android 开发负责人 · 智慧港口平台</div>
+          <ul class="job-bullets">
+            <li>独立完成企业级智慧港口 iOS/Android 系统从 0 到 1 的架构设计与全流程交付</li>
+            <li>构建实时 IoT 设备控制、数据可视化看板及离线优先架构，服务工业现场操作</li>
+            <li>通过 Instruments 深度 profiling，内存占用降低 <strong>35%</strong>，消除现场设备 Crash 集群</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">网幂科技</div>
+            <div class="job-date">2017 — 2020</div>
+          </div>
+          <div class="job-role">移动端 SDK 工程师 · 广告聚合平台</div>
+          <ul class="job-bullets">
+            <li>研发并维护 iOS/Android 广告聚合 SDK，<strong>2个月内</strong>完成 49 款 App 接入，平均提升收益 <strong>30–50%</strong></li>
+            <li>基于 ObjC Runtime 实现无侵入接入方案；SDK 上线后零崩溃归因</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">亲密圈</div>
+            <div class="job-date">2015 — 2017</div>
+          </div>
+          <div class="job-role">核心 iOS 开发 · 社交位置平台</div>
+          <ul class="job-bullets">
+            <li>核心开发成员，平台峰值用户 <strong>约 100 万</strong>；主导实时定位引擎、地图渲染与推送系统研发</li>
+            <li>后台定位电量优化至 <strong>&lt;3%/小时</strong>；App Store 评分 4.6</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div><!-- /main-col -->
+  </div><!-- /p1-body -->
+
+  <div class="p1-footer">
+    <div class="p1-footer-left">架构 · 性能 · 交付</div>
+    <div class="p1-footer-right">→ 第 2 页：项目详情与技术证明</div>
+  </div>
+
+</div><!-- /page1 -->
+
+
+<!-- ══════════════ PAGE 2 ══════════════ -->
+<div class="page page2">
+
+  <div class="p2-topbar">
+    <div class="p2-topbar-name">何驱之 Leo He &nbsp;|&nbsp; 高级 iOS 开发工程师</div>
+    <div class="p2-topbar-links">metavie.co &nbsp;·&nbsp; github.com/peterpan42388</div>
+  </div>
+
+  <div class="p2-body">
+
+    <div class="p2-main">
+      <div class="sec2-title">重点项目 &amp; 技术证明</div>
+
+      <div class="proj-card" style="border-left-color:#0A66C2">
+        <div class="proj-header">
+          <div class="proj-name">[P1] 智慧港口 iOS 平台 · 中海庭</div>
+          <span class="proj-tag">工业级 · 2020–2022</span>
+        </div>
+        <div class="proj-sub">IoT 设备控制 · 端到端独立交付 · 零崩溃率</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>港口运营商需要对起重机、传感器、物流节点进行实时数字化管控，无任何现存移动端代码</li>
+          <li><strong>方案：</strong>MVVM + Repository 架构；CoreBluetooth 设备配对；CoreData 离线优先同步；自研 UIKit 图表组件渲染实时遥测数据</li>
+          <li><strong>成果：</strong>独立完成 iOS + Android 全流程交付；Instruments 调优后内存降低 35%；生产 Crash-free rate &gt;99.5% ——与阳光电源 EV 充电 / 储能 App 的工业级可靠性要求高度契合</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#00a8cc">
+        <div class="proj-header">
+          <div class="proj-name">[P2] 亲密圈 · 百万用户位置社交 App</div>
+          <span class="proj-tag">消费级 · 2015–2017</span>
+        </div>
+        <div class="proj-sub">大规模 iOS 架构 · 实时系统 · 性能关键型</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>类 Life360 家庭定位 App，需可靠处理百万级并发位置更新</li>
+          <li><strong>方案：</strong>自研 CoreLocation 后台引擎（自适应轮询）；UIKit 地图聚合渲染万级标注；WebSocket + REST 混合实时同步</li>
+          <li><strong>成果：</strong>峰值约 100 万用户；电量消耗 &lt;3%/小时；Crash rate &lt;0.1%；App Store 评分 4.6</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#6366f1">
+        <div class="proj-header">
+          <div class="proj-name">[P3] OpenClaw · AI 助手 iOS/macOS 客户端</div>
+          <span class="proj-tag">MetaVie · 2025–至今</span>
+        </div>
+        <div class="proj-sub">Swift / SwiftUI · 插件化模块 · 20+ 渠道集成</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>构建通用 AI 助手，需原生 iOS/macOS 体验、多智能体调度、IoT 外设无缝配对</li>
+          <li><strong>方案：</strong>SwiftUI 声明式 UI + UIKit 桥接；插件注册中心（无需重编译扩展功能）；CoreBluetooth 外设管理器</li>
+          <li><strong>成果：</strong>单包支持 20+ 消息渠道，已上线运行；展示现代 Swift 架构与 IoT 集成能力——与阳光电源 EV 充电 App 技术方向一致</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#10b981">
+        <div class="proj-header">
+          <div class="proj-name">[P4] 家用屋顶光伏系统 · 个人搭建</div>
+          <span class="proj-tag" style="background:#ecfdf5;color:#059669">个人项目 · 2023</span>
+        </div>
+        <div class="proj-sub" style="color:#059669">10块太阳能板 · 4组铅蓄电池 · PLC变电控制 · 约4度/天</div>
+        <ul class="proj-bullets">
+          <li><strong>背景：</strong>基于对清洁能源的认同，个人独立完成选型、采购、安装全流程，无外包介入</li>
+          <li><strong>系统：</strong>屋顶10块光伏板，4组铅酸蓄电池，PLC自动切换市电/蓄电模式，自制发电量监控看板</li>
+          <li><strong>成果：</strong>晴天稳定发电约4度，市电与储能无缝切换，系统稳定运行1年以上——对能源硬件的可靠性需求有第一手的工程认知</li>
+        </ul>
+      </div>
+
+    </div><!-- /p2-main -->
+
+    <div class="p2-sidebar">
+
+      <div>
+        <div class="sec2-title">早期经历</div>
+        <div class="prev-job">
+          <div class="prev-job-name">广告SDK / 网幂科技</div>
+          <div class="prev-job-role">移动端SDK工程师</div>
+          <div class="prev-job-date">2017 — 2020</div>
+          <div class="prev-job-note">49款App接入，平均收益提升30–50%，ObjC Runtime无侵入方案</div>
+        </div>
+        <div class="prev-job">
+          <div class="prev-job-name">个人技术项目</div>
+          <div class="prev-job-role">独立开发者</div>
+          <div class="prev-job-date">2012 — 至今</div>
+          <div class="prev-job-note">2012年起自学编程，数月内晋升团队负责人；14年持续跨平台移动端开发</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec2-title">自我评价</div>
+        <div style="font-size:7.8pt;color:#334155;line-height:1.65;background:#fff;border-radius:8px;padding:9px 10px;border-left:3px solid #10b981;">
+          新能源基础设施是我认为工程投入当下最有价值的方向之一。我对能源系统的兴趣来自实践——自建光伏系统让我对能源软件的可靠性需求有直接认知。<br><br>
+          我的IoT移动端交付经验与阳光电源EV充电、储能产品的技术需求有清晰交集。我对这个岗位的兴趣，来自<strong>技术方向与价值观的双重契合</strong>。
+        </div>
+      </div>
+
+      <div class="links-box">
+        <div class="links-box-title">Links</div>
+        <div class="link-row">
+          <div class="link-icon">GH</div>
+          <div class="link-text">github.com/peterpan42388</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">LN</div>
+          <div class="link-text">linkedin.com/in/quzhi-he-9229823b2</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">WB</div>
+          <div class="link-text">metavie.co</div>
+        </div>
+        <div class="kw-row">
+          <span class="kw-chip">iOS</span>
+          <span class="kw-chip">Swift</span>
+          <span class="kw-chip">ObjC</span>
+          <span class="kw-chip">IoT</span>
+          <span class="kw-chip">新能源</span>
+        </div>
+      </div>
+
+    </div><!-- /p2-sidebar -->
+  </div><!-- /p2-body -->
+
+  <div class="page-num">第 2 页 / 共 2 页 &nbsp;·&nbsp; 投递：阳光电源 中高级iOS开发工程师 · 德国慕尼黑</div>
+
+</div><!-- /page2 -->
+
+</body>
+</html>

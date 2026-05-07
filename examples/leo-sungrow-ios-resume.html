@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Leo He — Senior iOS Developer · Sungrow</title>
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  width: 170mm;
+  max-width: 170mm;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 170mm;
+  max-width: 170mm;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', 'Arial', 'PingFang SC', sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.45;
+  color: #1a1a2e;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── DARK TECH BLUE PALETTE ── */
+:root {
+  --p1-bg-start:   #061529;
+  --p1-bg-mid:     #0a2540;
+  --p1-bg-end:     #112a5e;
+  --accent-bar:    linear-gradient(90deg, #0A66C2, #00c6ff, #38bdf8);
+  --primary:       #0A66C2;
+  --primary-light: #38bdf8;
+  --primary-glow:  rgba(56,189,248,0.18);
+  --text-hero:     #ffffff;
+  --text-main:     #c8d8ec;
+  --text-muted:    #9bb8d8;
+  --text-dim:      #6a8aaa;
+  --tag-bg:        rgba(255,255,255,0.07);
+  --tag-border:    rgba(255,255,255,0.12);
+  --tag-hot-bg:    rgba(10,102,194,0.3);
+  --tag-hot-color: #7ed4fa;
+  --sidebar-bg:    rgba(255,255,255,0.03);
+  --divider:       rgba(255,255,255,0.06);
+  --stat-num:      #38bdf8;
+  --p2-bg:         #f7f9fc;
+  --card-shadow:   rgba(10,38,80,0.07);
+}
+
+/* ── PAGE ── */
+.page {
+  width: 170mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+/* ════════ PAGE 1 ════════ */
+.page1 {
+  background: linear-gradient(160deg, var(--p1-bg-start) 0%, var(--p1-bg-mid) 50%, var(--p1-bg-end) 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.accent-bar {
+  height: 4px;
+  background: var(--accent-bar);
+  flex-shrink: 0;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px 13px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.avatar-initials {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary-light);
+  box-shadow: 0 0 0 5px var(--primary-glow), 0 8px 24px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26pt;
+  font-weight: 900;
+  color: var(--primary-light);
+  background: rgba(56,189,248,0.08);
+  flex-shrink: 0;
+  font-style: italic;
+}
+
+.hero-text { flex: 1; }
+.hero-name {
+  font-size: 26pt;
+  font-weight: 900;
+  color: var(--text-hero);
+  letter-spacing: 1.5px;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.hero-name-sub {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 1.2px;
+  margin-bottom: 4px;
+}
+.hero-title {
+  font-size: 8.5pt;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 13px;
+  font-size: 7.5pt;
+  color: var(--text-muted);
+}
+.dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* Badges */
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 9px 22px;
+  border-bottom: 1px solid var(--divider);
+}
+.badge-item {
+  background: rgba(56,189,248,0.12);
+  border: 1px solid rgba(56,189,248,0.28);
+  border-radius: 20px;
+  padding: 2px 9px;
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--primary-light);
+  letter-spacing: 0.3px;
+}
+
+/* Body layout */
+.p1-body {
+  display: flex;
+  flex: 1;
+  padding: 13px 0 0;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 68mm;
+  flex-shrink: 0;
+  padding: 0 14px 13px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--divider);
+}
+
+.sec-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  border-bottom: 1px solid rgba(56,189,248,0.2);
+  padding-bottom: 4px;
+  margin-bottom: 7px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.contact-icon {
+  width: 17px; height: 17px;
+  background: rgba(56,189,248,0.14);
+  border: 1px solid rgba(56,189,248,0.25);
+  border-radius: 4px;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 7.5pt;
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  background: rgba(56,189,248,0.06);
+  border: 1px solid rgba(56,189,248,0.14);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7px 3px;
+  border-right: 1px solid rgba(56,189,248,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 15pt;
+  font-weight: 900;
+  color: var(--stat-num);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 5.8pt;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: 0.2px;
+}
+
+/* Skills */
+.skill-block { margin-bottom: 6px; }
+.skill-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.tag {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 12px;
+  padding: 1px 7px;
+  font-size: 6.8pt;
+  color: var(--text-muted);
+}
+.tag.hot {
+  background: var(--tag-hot-bg);
+  border-color: rgba(56,189,248,0.35);
+  color: var(--tag-hot-color);
+  font-weight: 700;
+}
+
+/* Main col */
+.main-col {
+  flex: 1;
+  padding: 0 22px 13px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.summary-text {
+  font-size: 8.5pt;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+.summary-text strong { color: var(--primary-light); }
+
+.job-entry { margin-bottom: 10px; }
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1px;
+}
+.job-company {
+  font-size: 9pt;
+  font-weight: 800;
+  color: var(--text-hero);
+}
+.job-date {
+  font-size: 7pt;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.job-role {
+  font-size: 8pt;
+  color: var(--primary-light);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.job-bullets {
+  padding-left: 14px;
+  color: var(--text-main);
+  font-size: 8pt;
+}
+.job-bullets li { margin-bottom: 2px; }
+.job-bullets strong { color: var(--text-hero); }
+
+/* Footer */
+.p1-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 22px;
+  border-top: 1px solid var(--divider);
+  margin-top: auto;
+}
+.p1-footer-left { font-size: 7pt; color: var(--text-dim); font-style: italic; }
+.p1-footer-right { font-size: 7pt; color: var(--primary-light); font-weight: 600; }
+
+/* ════════ PAGE 2 ════════ */
+.page2 {
+  background: var(--p2-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.p2-topbar {
+  background: linear-gradient(90deg, #0a2540, #0A66C2);
+  padding: 9px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.p2-topbar-name {
+  font-size: 9.5pt;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.8px;
+}
+.p2-topbar-links {
+  font-size: 7.5pt;
+  color: rgba(255,255,255,0.7);
+}
+
+.p2-body {
+  display: flex;
+  flex: 1;
+  padding: 13px;
+  gap: 11px;
+}
+
+.p2-main { flex: 1; }
+.p2-sidebar {
+  width: 54mm;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.sec2-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #0A66C2;
+  border-bottom: 2px solid #0A66C2;
+  padding-bottom: 4px;
+  margin-bottom: 9px;
+}
+
+.proj-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-bottom: 8px;
+  border-left: 3px solid #0A66C2;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.proj-name {
+  font-size: 8.5pt;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+.proj-tag {
+  font-size: 6.5pt;
+  color: #888;
+  background: #e8f0fc;
+  border-radius: 10px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+.proj-sub {
+  font-size: 7.5pt;
+  color: #0A66C2;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.proj-bullets {
+  padding-left: 13px;
+  font-size: 7.8pt;
+  color: #334155;
+}
+.proj-bullets li { margin-bottom: 2px; }
+.proj-bullets strong { color: #1a1a2e; }
+
+.prev-job { margin-bottom: 8px; }
+.prev-job-name { font-size: 8pt; font-weight: 700; color: #1a1a2e; }
+.prev-job-role { font-size: 7.5pt; color: #0A66C2; font-weight: 600; }
+.prev-job-date { font-size: 7pt; color: #888; }
+.prev-job-note { font-size: 7.5pt; color: #555; margin-top: 2px; }
+
+.edu-block {
+  background: linear-gradient(135deg, #e8f0fc, #f0f4ff);
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-bottom: 6px;
+}
+.edu-school { font-size: 8.5pt; font-weight: 800; color: #1a1a2e; }
+.edu-degree { font-size: 7.5pt; color: #0A66C2; font-weight: 600; margin-top: 2px; }
+.edu-year { font-size: 7pt; color: #888; margin-top: 2px; }
+
+.links-box {
+  background: linear-gradient(135deg, #0a2540, #0A66C2);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.links-box-title {
+  font-size: 7pt;
+  font-weight: 700;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.link-icon {
+  width: 17px; height: 17px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.link-text { font-size: 7.5pt; color: rgba(255,255,255,0.85); }
+.kw-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.kw-chip {
+  background: rgba(56,189,248,0.22);
+  border: 1px solid rgba(56,189,248,0.35);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 6.5pt;
+  color: #bde8fb;
+}
+
+/* Motivation block */
+.motivation-box {
+  background: rgba(56,189,248,0.07);
+  border: 1px solid rgba(56,189,248,0.2);
+  border-left: 3px solid #38bdf8;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 8pt;
+  color: var(--text-main);
+  line-height: 1.65;
+}
+.motivation-box strong { color: var(--primary-light); }
+.motivation-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: 5px;
+}
+
+/* Sungrow target badge */
+.target-badge {
+  display: inline-block;
+  background: rgba(56,189,248,0.18);
+  border: 1px solid rgba(56,189,248,0.4);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 6.5pt;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.page-num {
+  text-align: right;
+  padding: 5px 13px;
+  font-size: 7pt;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE 1 ══════════════ -->
+<div class="page page1">
+
+  <div class="accent-bar"></div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="avatar-initials">L</div>
+    <div class="hero-text">
+      <div class="hero-name">Leo He</div>
+      <div class="hero-name-sub">何驱之 &nbsp;·&nbsp; Senior iOS Developer</div>
+      <div class="hero-title">iOS Architecture &nbsp;|&nbsp; Performance Optimization &nbsp;|&nbsp; Large-Scale App Delivery</div>
+      <div class="hero-meta">
+        <span><span class="dot"></span>Shenzhen · Open to Munich, Germany</span>
+        <span><span class="dot"></span>leo@metavie.co</span>
+        <span><span class="dot"></span>github.com/peterpan42388</span>
+        <span><span class="dot"></span>Target: <strong style="color:#38bdf8">€80K–110K / yr</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges -->
+  <div class="badges-row">
+    <span class="badge-item">Swift</span>
+    <span class="badge-item">Objective-C</span>
+    <span class="badge-item">iOS Architecture</span>
+    <span class="badge-item">Performance Optimization</span>
+    <span class="badge-item">Crash Analysis</span>
+    <span class="badge-item">Memory Management</span>
+    <span class="badge-item">Modular Design</span>
+    <span class="badge-item">UIKit / SwiftUI</span>
+    <span class="badge-item">CI/CD</span>
+    <span class="badge-item">IoT Integration</span>
+  </div>
+
+  <!-- Body -->
+  <div class="p1-body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div>
+        <div class="sec-title">Contact</div>
+        <div class="contact-item">
+          <div class="contact-icon">GH</div>
+          <a class="contact-link">github.com/peterpan42388</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">WB</div>
+          <a class="contact-link">metavie.co</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">LN</div>
+          <a class="contact-link">linkedin.com/in/quzhi-he-9229823b2</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">ML</div>
+          <a class="contact-link">leo@metavie.co</a>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">12<span style="font-size:9pt">+</span></span>
+          <span class="stat-label">yrs iOS<br>dev</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">1M<span style="font-size:9pt">+</span></span>
+          <span class="stat-label">peak<br>users</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">49</span>
+          <span class="stat-label">apps<br>shipped</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Core Skills</div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Languages</div>
+          <div class="skill-tags">
+            <span class="tag hot">Objective-C</span>
+            <span class="tag hot">Swift</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Frameworks</div>
+          <div class="skill-tags">
+            <span class="tag hot">UIKit</span>
+            <span class="tag">SwiftUI</span>
+            <span class="tag">CoreBluetooth</span>
+            <span class="tag">CoreLocation</span>
+            <span class="tag">MapKit</span>
+            <span class="tag">CoreData</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Architecture</div>
+          <div class="skill-tags">
+            <span class="tag hot">MVVM</span>
+            <span class="tag">MVC</span>
+            <span class="tag">Modularization</span>
+            <span class="tag">Clean Arch</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Debugging</div>
+          <div class="skill-tags">
+            <span class="tag hot">Instruments</span>
+            <span class="tag">Crashlytics</span>
+            <span class="tag">Charles</span>
+            <span class="tag">LLDB</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ DevOps</div>
+          <div class="skill-tags">
+            <span class="tag">CI/CD</span>
+            <span class="tag">Fastlane</span>
+            <span class="tag">Git</span>
+            <span class="tag">XCTest</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">▸ Languages</div>
+          <div class="skill-tags">
+            <span class="tag hot">English (Fluent)</span>
+            <span class="tag">Mandarin (Native)</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- Main col -->
+    <div class="main-col">
+
+      <div>
+        <div class="target-badge">▶ TARGET: Sungrow · Mid/Senior iOS Developer · Munich, DE</div>
+        <div class="sec-title">Professional Summary</div>
+        <div class="summary-text">
+          Senior iOS Developer with <strong>12+ years of Objective-C and Swift</strong> development,
+          covering consumer social platforms (<strong>1M+ peak users</strong>), IoT industrial systems,
+          mobile SDK engineering, and AI-native applications. Deep expertise in
+          <strong>large-scale app architecture, performance profiling, crash analysis, memory management,
+          and modular component design</strong>. Proven ability to deliver complex projects independently
+          and collaborate across cross-functional teams. Founded a UK-registered technology company
+          in 2025, leading full-cycle mobile product development.
+          Strong English communication skills; committed to long-term international engineering contribution.
+        </div>
+      </div>
+
+      <div>
+        <div class="motivation-title">✦ Letter of Intent — Why Sungrow</div>
+        <div class="motivation-box">
+          I am applying for the <strong>Mid/Senior iOS Developer</strong> position at Sungrow Munich.
+          Clean energy infrastructure is where I believe engineering effort has the most impact today.
+          My interest is grounded in practice — I independently designed and built a
+          <strong>rooftop PV station</strong> at my home (10 panels, 4-bank lead-acid storage,
+          PLC grid-switching, ~4 kWh/day yield), which gave me firsthand appreciation for the
+          reliability and precision that energy systems demand.<br><br>
+          My background in <strong>IoT-connected mobile systems</strong> (industrial smart port platform,
+          AI peripheral pairing via CoreBluetooth) and large-scale consumer app delivery aligns
+          well with Sungrow's mobile product requirements. I see a clear fit between my technical
+          depth and the engineering standards this role calls for.
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Experience</div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">MetaVie Ltd &nbsp;<span style="font-size:7pt;color:#6a8aaa;font-weight:400">(UK Registered)</span></div>
+            <div class="job-date">Aug 2025 — Present</div>
+          </div>
+          <div class="job-role">Founder &amp; Lead iOS / Full-Stack Developer</div>
+          <ul class="job-bullets">
+            <li>Architected <strong>OpenClaw</strong> — a cross-platform AI assistant with native iOS/macOS client built in Swift/SwiftUI, supporting <strong>20+ messaging channels</strong> (WhatsApp, Telegram, iMessage…)</li>
+            <li>Designed modular plugin architecture enabling <strong>zero-recompile feature extension</strong>; integrated CoreBluetooth for IoT peripheral pairing</li>
+            <li>Implemented multi-agent routing engine, voice-wake, and live canvas — production-grade, active users daily</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">职校计算机教研室 &nbsp;<span style="font-size:7pt;color:#6a8aaa;font-weight:400">(Vocational College)</span></div>
+            <div class="job-date">Sep 2023 — Aug 2025</div>
+          </div>
+          <div class="job-role">Computer Department Head &amp; Lead Instructor</div>
+          <ul class="job-bullets">
+            <li>Led iOS / mobile curriculum design for 10 classes; exam average <strong>380/490</strong>, grew dept from 3 → 10 classes</li>
+            <li>Maintained personal iOS engineering projects throughout, keeping skills production-current</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">中海庭（Zhonghanting）</div>
+            <div class="job-date">2020 — 2022</div>
+          </div>
+          <div class="job-role">iOS / Android Lead Developer — Smart Port Platform</div>
+          <ul class="job-bullets">
+            <li>Independently designed and delivered an enterprise iOS/Android smart port platform end-to-end, from architecture through production rollout</li>
+            <li>Built real-time IoT device control, data visualization dashboards, and offline-capable architecture for industrial operations</li>
+            <li>Conducted thorough Instruments profiling — reduced memory footprint <strong>35%</strong>, eliminated crash clusters on field devices</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">网幂（Wangmi Technology）</div>
+            <div class="job-date">2017 — 2020</div>
+          </div>
+          <div class="job-role">Mobile SDK Engineer — Ad Aggregation Platform</div>
+          <ul class="job-bullets">
+            <li>Developed and maintained an iOS/Android ad aggregation SDK deployed to <strong>49 apps</strong> in 2 months, boosting average revenue <strong>30–50%</strong></li>
+            <li>Built robust ObjC runtime hooks for SDK isolation; zero crashes attributed to SDK in post-release monitoring</li>
+          </ul>
+        </div>
+
+        <div class="job-entry">
+          <div class="job-header">
+            <div class="job-company">亲密圈（Qinmiquan）</div>
+            <div class="job-date">2015 — 2017</div>
+          </div>
+          <div class="job-role">Core iOS Developer — Social Location Platform</div>
+          <ul class="job-bullets">
+            <li>Core developer on a Life360-style family location app that reached <strong>~1M peak users</strong></li>
+            <li>Owned real-time location engine (CoreLocation + background modes), MapKit rendering, and push notification system; optimised battery usage to &lt;3% drain/hr</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div><!-- /main-col -->
+  </div><!-- /p1-body -->
+
+  <div class="p1-footer">
+    <div class="p1-footer-left">Architecture · Performance · Delivery</div>
+    <div class="p1-footer-right">→ Page 2: Project Deep-Dives &amp; Evidence</div>
+  </div>
+
+</div><!-- /page1 -->
+
+
+<!-- ══════════════ PAGE 2 ══════════════ -->
+<div class="page page2">
+
+  <div class="p2-topbar">
+    <div class="p2-topbar-name">Leo He (何驱之) &nbsp;|&nbsp; Senior iOS Developer</div>
+    <div class="p2-topbar-links">metavie.co &nbsp;·&nbsp; github.com/peterpan42388</div>
+  </div>
+
+  <div class="p2-body">
+
+    <!-- Projects -->
+    <div class="p2-main">
+      <div class="sec2-title">Key Projects &amp; Technical Evidence</div>
+
+      <div class="proj-card" style="border-left-color:#0A66C2">
+        <div class="proj-header">
+          <div class="proj-name">[P1] Smart Port iOS Platform — 中海庭</div>
+          <span class="proj-tag">Enterprise · 2020–2022</span>
+        </div>
+        <div class="proj-sub">Industrial IoT · End-to-End Delivery · Real-time Device Control</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> Port operator needed a digital control system for cranes, sensors, and logistics across multiple berths; zero existing mobile codebase</li>
+          <li><strong>Approach:</strong> Architected MVVM + Repository pattern; CoreBluetooth for device pairing; offline-first CoreData sync; custom UIKit chart components for real-time telemetry</li>
+          <li><strong>Result:</strong> Delivered full iOS + Android app in one quarter, solo; Instruments profiling cut memory <strong>35%</strong>; crash-free rate &gt;99.5% in production — directly relevant to Sungrow EV/energy IoT apps</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#00a8cc">
+        <div class="proj-header">
+          <div class="proj-name">[P2] 亲密圈 — Location Social App (1M Users)</div>
+          <span class="proj-tag">Consumer · 2015–2017</span>
+        </div>
+        <div class="proj-sub">Large-Scale iOS · Real-time Architecture · Performance-Critical</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> Family location-sharing app targeting Life360 market; needed to handle 1M+ concurrent location updates reliably</li>
+          <li><strong>Approach:</strong> Custom CoreLocation background engine with adaptive polling; UIKit map clustering for 10K+ pins; WebSocket + REST hybrid for real-time sync</li>
+          <li><strong>Result:</strong> Sustained <strong>~1M peak users</strong>; battery drain &lt;3%/hr; &lt;0.1% crash rate; App Store rating 4.6 — demonstrates large-scale iOS delivery capability</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#6366f1">
+        <div class="proj-header">
+          <div class="proj-name">[P3] OpenClaw — AI Assistant iOS/macOS Client</div>
+          <span class="proj-tag">MetaVie · 2025–Present</span>
+        </div>
+        <div class="proj-sub">Swift / SwiftUI · Modular Plugin System · 20+ Channel Integrations</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> Built a universal AI assistant requiring native iOS/macOS UX, multi-agent orchestration, and zero-friction IoT peripheral pairing</li>
+          <li><strong>Approach:</strong> SwiftUI declarative UI + UIKit bridging for legacy components; modular plugin registry (no recompile for new features); CoreBluetooth peripheral manager</li>
+          <li><strong>Result:</strong> Single binary supporting 20+ messaging channels; live in production; demonstrates modern Swift architecture and IoT integration — aligns with Sungrow's EV charging app needs</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#f59e0b">
+        <div class="proj-header">
+          <div class="proj-name">[P4] Ad Aggregation SDK — 网幂 (49 Apps)</div>
+          <span class="proj-tag">SDK Engineering · 2017–2020</span>
+        </div>
+        <div class="proj-sub">ObjC Runtime · Zero-Crash SDK · Cross-App Deployment</div>
+        <ul class="proj-bullets">
+          <li><strong>Context:</strong> Ad platform needed a universal iOS/Android SDK deployable to 49 diverse apps without source-code access</li>
+          <li><strong>Approach:</strong> ObjC runtime method swizzling for non-invasive integration; thread-safe ad auction engine; Instruments-guided memory optimization</li>
+          <li><strong>Result:</strong> Deployed to 49 apps in 2 months; avg revenue lift <strong>30–50%</strong>; zero SDK-attributed crashes across fleet — proof of ObjC runtime depth and production engineering discipline</li>
+        </ul>
+      </div>
+
+      <div class="proj-card" style="border-left-color:#10b981">
+        <div class="proj-header">
+          <div class="proj-name">[P5] Home Rooftop PV Station — Personal Build</div>
+          <span class="proj-tag" style="background:#ecfdf5;color:#059669">Personal · 2023</span>
+        </div>
+        <div class="proj-sub" style="color:#059669">10 Solar Panels · 4 Battery Packs · PLC Grid Switching · ~4 kWh/day</div>
+        <ul class="proj-bullets">
+          <li><strong>Motivation:</strong> Personal conviction in clean energy — designed, procured, and installed the full system independently with no contractor involvement</li>
+          <li><strong>System:</strong> 10× PV panels on rooftop, 4× lead-acid battery bank, PLC-controlled automatic grid/battery switching, monitoring dashboard for daily yield tracking</li>
+          <li><strong>Outcome:</strong> Stable ~4 kWh/day generation under good sunlight; seamless failover between solar, battery, and mains grid; system has run reliably for 1+ year — <strong>this is why I want to build the software that powers Sungrow's hardware</strong></li>
+        </ul>
+      </div>
+
+    </div><!-- /p2-main -->
+
+    <!-- Sidebar -->
+    <div class="p2-sidebar">
+
+      <div>
+        <div class="sec2-title">Earlier</div>
+        <div class="prev-job">
+          <div class="prev-job-name">Independent / Freelance</div>
+          <div class="prev-job-role">iOS Developer</div>
+          <div class="prev-job-date">2012 — 2015</div>
+          <div class="prev-job-note">Started programming in 2012; promoted to team lead within months on first role; built multiple Obj-C apps from scratch</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec2-title">Education</div>
+        <div class="edu-block">
+          <div class="edu-school">Self-Directed Engineer</div>
+          <div class="edu-degree">iOS Development · since 2012</div>
+          <div class="edu-year">12+ years continuous practice</div>
+        </div>
+        <div style="font-size:7.5pt;color:#555;margin-top:5px;">
+          · Promoted to team lead within months of first role (2012)<br>
+          · 14 years cross-platform mobile + full-stack<br>
+          · Founded UK Ltd company (2025)
+        </div>
+      </div>
+
+      <div>
+        <div class="sec2-title">Why Sungrow</div>
+        <div style="font-size:7.8pt;color:#334155;line-height:1.6;background:#fff;border-radius:8px;padding:9px 10px;border-left:3px solid #10b981;">
+          Clean energy is a domain I engage with technically, not just philosophically —
+          building my own PV station gave me a concrete understanding of what reliable
+          energy software needs to support.<br><br>
+          My IoT mobile delivery experience (industrial smart port, CoreBluetooth device control)
+          maps directly to Sungrow's EV charging and energy management app requirements.
+          I am interested in this role because the <strong>technical scope and domain</strong> are
+          a genuine match for where I want to invest my engineering career.
+        </div>
+      </div>
+
+      <div class="links-box">
+        <div class="links-box-title">Links &amp; Open Source</div>
+        <div class="link-row">
+          <div class="link-icon">GH</div>
+          <div class="link-text">github.com/peterpan42388</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">WB</div>
+          <div class="link-text">metavie.co</div>
+        </div>
+        <div class="link-row">
+          <div class="link-icon">LN</div>
+          <div class="link-text">linkedin.com/in/quzhi-he-9229823b2</div>
+        </div>
+        <div class="kw-row">
+          <span class="kw-chip">iOS</span>
+          <span class="kw-chip">Swift</span>
+          <span class="kw-chip">ObjC</span>
+          <span class="kw-chip">IoT</span>
+          <span class="kw-chip">Munich</span>
+        </div>
+      </div>
+
+    </div><!-- /p2-sidebar -->
+  </div><!-- /p2-body -->
+
+  <div class="page-num">Page 2 / 2 &nbsp;·&nbsp; Targeting: Sungrow Mid/Senior iOS Developer — Munich, DE</div>
+
+</div><!-- /page2 -->
+
+</body>
+</html>

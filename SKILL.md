@@ -110,11 +110,18 @@ The 2-column layout (72mm sidebar + flex main) only fills ~160–172mm of horizo
 Using 210mm leaves a 40–50mm white blank on the right — never acceptable in final output.
 
 ```css
-/* CRITICAL: html and body must share the same width as .page */
-html, body {
-  width: 170mm;   /* Must match .page width — prevents right-side blank */
-  margin: 0;
-  padding: 0;
+/* CRITICAL: lock html AND body to page width — prevents right-side blank */
+html {
+  width: 170mm;
+  max-width: 170mm;   /* required: 'width' alone is not enforced on root element */
+  overflow-x: hidden;
+  margin: 0; padding: 0;
+}
+body {
+  width: 170mm;
+  max-width: 170mm;
+  overflow-x: hidden;
+  margin: 0; padding: 0;
 }
 
 .page {
@@ -127,7 +134,8 @@ html, body {
 ```
 
 **Rules:**
-- `html`, `body`, and `.page` must all share `width: 170mm`. If only `.page` is set, the browser body still fills the viewport, producing a white blank to the right.
+- `html`, `body`, and `.page` must all have **both `width: 170mm` AND `max-width: 170mm`**. Setting only `width` on `html` is not reliably enforced by browsers — `max-width` is required to cap it.
+- Add `overflow-x: hidden` on both `html` and `body` to prevent any child element from expanding the scroll area beyond 170mm.
 - **Never set `min-height`** on `.page`. A fixed min-height creates bottom blank when content is shorter. Height must be driven by content only.
 
 If trimming a PDF after export, use the pypdf step in Phase 4.5.
